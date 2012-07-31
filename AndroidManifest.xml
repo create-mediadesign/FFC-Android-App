@@ -27,6 +27,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name=".SettingsActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
     </application>
     
     <instrumentation android:name="android.test.InstrumentationTestRunner"
