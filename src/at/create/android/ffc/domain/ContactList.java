@@ -1,9 +1,10 @@
-package at.create.android.ffc;
+package at.create.android.ffc.domain;
 
 import java.util.List;
 
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+
 
 /**
  * @author Philipp Ullmann

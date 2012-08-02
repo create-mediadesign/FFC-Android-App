@@ -1,4 +1,4 @@
-package at.create.android.ffc;
+package at.create.android.ffc.http;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

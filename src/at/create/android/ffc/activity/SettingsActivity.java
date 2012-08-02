@@ -1,7 +1,8 @@
-package at.create.android.ffc;
+package at.create.android.ffc.activity;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import at.create.android.ffc.R;
 
 /**
  * @author Philipp Ullmann

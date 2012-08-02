@@ -1,9 +1,9 @@
-package at.create.android.ffc.test;
+package at.create.android.ffc.test.domain;
 
 import java.io.ByteArrayInputStream;
 
 import android.test.AndroidTestCase;
-import at.create.android.ffc.Setting;
+import at.create.android.ffc.domain.Setting;
 
 public final class SettingTest extends AndroidTestCase {
     private String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +

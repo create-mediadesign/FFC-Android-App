@@ -1,10 +1,10 @@
-package at.create.android.ffc.test;
+package at.create.android.ffc.test.domain;
 
 import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
 
 import android.test.AndroidTestCase;
-import at.create.android.ffc.ContactList;
-import at.create.android.ffc.MockHttpInputMessage;
+import at.create.android.ffc.domain.ContactList;
+import at.create.android.ffc.http.MockHttpInputMessage;
 
 public class ContactListXMLConversionTest extends AndroidTestCase {
     private SimpleXmlHttpMessageConverter xmlConverter;

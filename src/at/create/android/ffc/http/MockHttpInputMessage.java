@@ -1,4 +1,4 @@
-package at.create.android.ffc;
+package at.create.android.ffc.http;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

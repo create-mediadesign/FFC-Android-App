@@ -1,4 +1,4 @@
-package at.create.android.ffc;
+package at.create.android.ffc.activity;
 
 
 /**

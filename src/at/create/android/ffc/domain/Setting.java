@@ -1,4 +1,4 @@
-package at.create.android.ffc;
+package at.create.android.ffc.domain;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,6 +7,8 @@ import org.apache.commons.io.IOUtils;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
+
+import at.create.android.ffc.http.MockHttpInputMessage;
 
 /**
  * @author Philipp Ullmann

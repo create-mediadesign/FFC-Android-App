@@ -1,4 +1,4 @@
-package at.create.android.ffc;
+package at.create.android.ffc.domain;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;

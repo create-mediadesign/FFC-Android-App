@@ -1,10 +1,10 @@
-package at.create.android.ffc.test;
+package at.create.android.ffc.test.http;
 
 import java.io.IOException;
 
 import android.test.AndroidTestCase;
-import at.create.android.ffc.FormBasedAuthentication;
-import at.create.android.ffc.Setting;
+import at.create.android.ffc.domain.Setting;
+import at.create.android.ffc.http.FormBasedAuthentication;
 
 public final class FormBasedAuthenticationTest extends AndroidTestCase {
     private Setting setting;

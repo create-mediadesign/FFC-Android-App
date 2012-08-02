@@ -1,4 +1,4 @@
-package at.create.android.ffc.test;
+package at.create.android.ffc.test.domain;
 
 import java.io.IOException;
 
@@ -6,8 +6,8 @@ import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
 
 
 import android.test.AndroidTestCase;
-import at.create.android.ffc.Contact;
-import at.create.android.ffc.MockHttpInputMessage;
+import at.create.android.ffc.domain.Contact;
+import at.create.android.ffc.http.MockHttpInputMessage;
 
 public final class ContactXMLConversionTest extends AndroidTestCase {
     private SimpleXmlHttpMessageConverter xmlConverter;
