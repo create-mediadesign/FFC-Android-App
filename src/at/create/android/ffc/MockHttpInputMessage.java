@@ -1,4 +1,4 @@
-package at.create.android.ffc.test;
+package at.create.android.ffc;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -8,8 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.util.Assert;
 
-public class MockHttpInputMessage implements HttpInputMessage{
-    
+public class MockHttpInputMessage implements HttpInputMessage {
     private final HttpHeaders headers = new HttpHeaders();
     private final InputStream body;
     

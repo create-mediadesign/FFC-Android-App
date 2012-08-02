@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
  * Authenticate with username and password.
  */
 public final class FormBasedAuthentication {
+    private static final String PATH = "/authentication";
     private final String username;
     private final String password;
     private final String url;
@@ -21,12 +22,12 @@ public final class FormBasedAuthentication {
      * Stores the given parameters into instance variables.
      * @param username Username
      * @param password Password
-     * @param url Url to Fat Free CRM web application
+     * @param baseUri Url to Fat Free CRM web application
      */
-    public FormBasedAuthentication(final String username, final String password, final String url) {
+    public FormBasedAuthentication(final String username, final String password, final String baseUri) {
         this.username = username;
         this.password = password;
-        this.url      = url;
+        this.url      = baseUri + PATH;
     }
     
     /**
@@ -46,7 +47,11 @@ public final class FormBasedAuthentication {
                                                                                         HttpMethod.POST,
                                                                                         requestEntity,
                                                                                         String.class);
-        System.out.println(response.getBody());
-        return false;
+        
+        if (response.getHeaders().getLocation().getPath().equals("/login")) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

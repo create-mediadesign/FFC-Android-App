@@ -4,6 +4,7 @@ import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
 
 import android.test.AndroidTestCase;
 import at.create.android.ffc.ContactList;
+import at.create.android.ffc.MockHttpInputMessage;
 
 public class ContactListXMLConversionTest extends AndroidTestCase {
     private SimpleXmlHttpMessageConverter xmlConverter;
