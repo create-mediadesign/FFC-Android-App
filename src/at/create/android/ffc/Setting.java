@@ -16,17 +16,17 @@ import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
 @Root(name = "setting")
 public final class Setting {
     @Element
-    private String url;
+    private String baseUri;
     @Element
     private String username;
     @Element
     private String password;
     
     /**
-     * @return the url
+     * @return the baseUri
      */
-    public String getUrl() {
-        return url;
+    public String getBaseUri() {
+        return baseUri;
     }
     
     /**

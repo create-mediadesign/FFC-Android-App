@@ -18,14 +18,14 @@ public final class FormBasedAuthenticationTest extends AndroidTestCase {
     public void testSuccessfulAuthentication() throws IOException {
         FormBasedAuthentication auth = new FormBasedAuthentication(setting.getUsername(),
                                                                    setting.getPassword(),
-                                                                   setting.getUrl());
+                                                                   setting.getBaseUri());
         assertTrue(auth.authenticate());
     }
     
     public void testFailingAuthentication() throws IOException {
         FormBasedAuthentication auth = new FormBasedAuthentication("Unknown",
                                                                    setting.getPassword(),
-                                                                   setting.getUrl());
+                                                                   setting.getBaseUri());
         assertFalse(auth.authenticate());
     }
 }

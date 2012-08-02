@@ -8,7 +8,7 @@ import at.create.android.ffc.Setting;
 public final class SettingTest extends AndroidTestCase {
     private String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
                          "<setting>" +
-                           "<url>http://create.at</url>" +
+                           "<baseUri>http://create.at</baseUri>" +
                            "<username>philipp</username>" +
                            "<password>secret</password>" +
                          "</setting>";
@@ -20,9 +20,9 @@ public final class SettingTest extends AndroidTestCase {
         setting = Setting.load(new ByteArrayInputStream(xml.getBytes()));
     }
     
-    public void testSettingOfUrl() {
+    public void testSettingOfBaseUri() {
         assertEquals("http://create.at",
-                     setting.getUrl());
+                     setting.getBaseUri());
     }
     
     public void testSettingOfUsername() {
