@@ -22,7 +22,7 @@ public final class FormBasedAuthentication {
      * Stores the given parameters into instance variables.
      * @param username Username
      * @param password Password
-     * @param baseUri Url to Fat Free CRM web application
+     * @param baseUri Base uri to Fat Free CRM web application
      */
     public FormBasedAuthentication(final String username, final String password, final String baseUri) {
         this.username = username;
