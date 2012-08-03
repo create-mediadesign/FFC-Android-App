@@ -9,7 +9,6 @@ public final class FetchContactsTest extends HttpBase {
     protected void setUp() throws Exception {
         super.setUp();
         fetcher = new FetchContacts(setting.getBaseUri());
-        authenticate();
         fetcher.fetch();
     }
     

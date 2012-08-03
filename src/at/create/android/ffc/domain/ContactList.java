@@ -10,7 +10,7 @@ import org.simpleframework.xml.Root;
  * @author Philipp Ullmann
  * Holds a list of contacts.
  */
-@Root(name = "contacts")
+@Root(name = "contacts", strict = false)
 public final class ContactList {
     @ElementList(inline = true)
     private List<Contact> contacts;

@@ -5,11 +5,14 @@ import java.io.IOException;
 import at.create.android.ffc.http.FormBasedAuthentication;
 
 public final class FormBasedAuthenticationTest extends HttpBase {
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+        resetAuthentication();
+    }
+    
     public void testSuccessfulAuthentication() throws IOException {
-        FormBasedAuthentication auth = new FormBasedAuthentication(setting.getUsername(),
-                                                                   setting.getPassword(),
-                                                                   setting.getBaseUri());
-        assertTrue(auth.authenticate());
+        assertTrue(authenticate());
     }
     
     public void testFailingAuthentication() throws IOException {

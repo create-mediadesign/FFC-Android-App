@@ -1,9 +1,14 @@
 package at.create.android.ffc.http;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -42,16 +47,14 @@ public final class FormBasedAuthentication {
         
         HttpHeaders requestHeaders                              = new HttpHeaders();
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<MultiValueMap<String, Object>>(formData, requestHeaders);
-        RestTemplate restTemplate                               = new RestTemplate();
+        RestTemplate restTemplate                               = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
+        List<ClientHttpRequestInterceptor> interceptors         = new ArrayList<ClientHttpRequestInterceptor>();
+        interceptors.add(new MyClientHttpRequestInterceptor());
+        restTemplate.setInterceptors(interceptors);
         ResponseEntity<String> response                         = restTemplate.exchange(url,
                                                                                         HttpMethod.POST,
                                                                                         requestEntity,
                                                                                         String.class);
-        
-        if (response.getHeaders().getLocation().getPath().equals("/login")) {
-            return false;
-        } else {
-            return true;
-        }
+        return !response.getBody().contains("authentication[username]");
     }
 }

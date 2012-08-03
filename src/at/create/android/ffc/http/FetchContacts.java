@@ -8,6 +8,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
@@ -48,7 +50,10 @@ public final class FetchContacts {
         HttpEntity<?> requestEntity = new HttpEntity<Object>(requestHeaders);
         
         // Create a new RestTemplate instance
-        RestTemplate restTemplate = new RestTemplate();
+        RestTemplate restTemplate                       = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
+        List<ClientHttpRequestInterceptor> interceptors = new ArrayList<ClientHttpRequestInterceptor>();
+        interceptors.add(new MyClientHttpRequestInterceptor());
+        restTemplate.setInterceptors(interceptors);
         restTemplate.getMessageConverters().add(new SimpleXmlHttpMessageConverter());
         
         // Perform the HTTP GET request
