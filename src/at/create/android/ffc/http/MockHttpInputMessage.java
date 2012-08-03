@@ -8,6 +8,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.util.Assert;
 
+/**
+ * @author Philipp Ullmann
+ * Mock HttpInputMessage to parse XML strings.
+ */
 public class MockHttpInputMessage implements HttpInputMessage {
     private final HttpHeaders headers = new HttpHeaders();
     private final InputStream body;
