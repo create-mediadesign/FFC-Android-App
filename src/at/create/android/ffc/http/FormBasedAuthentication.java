@@ -1,27 +1,19 @@
 package at.create.android.ffc.http;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * @author Philipp Ullmann
  * Authenticate with username and password.
  */
-public final class FormBasedAuthentication {
+public final class FormBasedAuthentication extends HttpBase {
     private static final String PATH = "/authentication";
     private final String username;
     private final String password;
-    private final String url;
     
     /**
      * Stores the given parameters into instance variables.
@@ -30,9 +22,14 @@ public final class FormBasedAuthentication {
      * @param baseUri Base uri to Fat Free CRM web application
      */
     public FormBasedAuthentication(final String username, final String password, final String baseUri) {
+        super(baseUri);
         this.username = username;
         this.password = password;
-        this.url      = baseUri + PATH;
+    }
+    
+    @Override
+    protected String getUrl() {
+        return baseUri + PATH;
     }
     
     /**
@@ -45,16 +42,11 @@ public final class FormBasedAuthentication {
         formData.add("authentication[password]", password);
         formData.add("authentication[remember_me]", "1");
         
-        HttpHeaders requestHeaders                              = new HttpHeaders();
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<MultiValueMap<String, Object>>(formData, requestHeaders);
-        RestTemplate restTemplate                               = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
-        List<ClientHttpRequestInterceptor> interceptors         = new ArrayList<ClientHttpRequestInterceptor>();
-        interceptors.add(new MyClientHttpRequestInterceptor());
-        restTemplate.setInterceptors(interceptors);
-        ResponseEntity<String> response                         = restTemplate.exchange(url,
+        ResponseEntity<String> response                         = restTemplate.exchange(getUrl(),
                                                                                         HttpMethod.POST,
                                                                                         requestEntity,
                                                                                         String.class);
-        return !response.getBody().contains("authentication[username]");
+        return !response.getHeaders().getLocation().getPath().equals("/login");
     }
 }

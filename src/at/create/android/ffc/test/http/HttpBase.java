@@ -2,8 +2,8 @@ package at.create.android.ffc.test.http;
 
 import android.test.AndroidTestCase;
 import at.create.android.ffc.domain.Setting;
+import at.create.android.ffc.http.CookiePreserveHttpRequestInterceptor;
 import at.create.android.ffc.http.FormBasedAuthentication;
-import at.create.android.ffc.http.StaticCacheHelper;
 
 public abstract class HttpBase extends AndroidTestCase {
     protected Setting setting;
@@ -16,7 +16,7 @@ public abstract class HttpBase extends AndroidTestCase {
     }
     
     protected boolean authenticate() {
-        if (StaticCacheHelper.retrieveObjectFromCache("cookieStore") == null) {
+        if (!CookiePreserveHttpRequestInterceptor.getInstance().hasCookies()) {
             FormBasedAuthentication auth = new FormBasedAuthentication(setting.getUsername(),
                                                                        setting.getPassword(),
                                                                        setting.getBaseUri());
@@ -28,6 +28,6 @@ public abstract class HttpBase extends AndroidTestCase {
     }
     
     protected void resetAuthentication() {
-        StaticCacheHelper.clearCache();
+        CookiePreserveHttpRequestInterceptor.getInstance().clear();
     }
 }

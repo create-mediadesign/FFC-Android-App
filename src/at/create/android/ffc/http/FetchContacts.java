@@ -1,17 +1,11 @@
 package at.create.android.ffc.http;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
 
 import at.create.android.ffc.domain.Contact;
 import at.create.android.ffc.domain.ContactList;
@@ -20,16 +14,17 @@ import at.create.android.ffc.domain.ContactList;
  * @author Philipp Ullmann
  * Fetches contacts from "/contacts"
  */
-public final class FetchContacts {
+public final class FetchContacts extends HttpBase {
     private static final String PATH = "/contacts.xml";
     private ContactList contactList  = null;
-    private final String url;
     
-    /**
-     * @param baseUri Base uri to Fat Free CRM web application
-     */
-    public FetchContacts(final String baseUri) {
-        this.url = baseUri + PATH;
+    public FetchContacts(String baseUri) {
+        super(baseUri);
+    }
+    
+    @Override
+    protected String getUrl() {
+        return baseUri + PATH;
     }
     
     public List<Contact> getContacts() {
@@ -40,24 +35,12 @@ public final class FetchContacts {
      * Fetches the contacts.
      */
     public void fetch() {
-        // Set the Accept header for "application/xml"
-        HttpHeaders requestHeaders           = new HttpHeaders();
-        List<MediaType> acceptableMediaTypes = new ArrayList<MediaType>();
-        acceptableMediaTypes.add(MediaType.APPLICATION_XML);
-        requestHeaders.setAccept(acceptableMediaTypes);
-        
-        // Populate the headers in an HttpEntity object to use for the request
+        setAcceptHeaderApplicationXml();
         HttpEntity<?> requestEntity = new HttpEntity<Object>(requestHeaders);
-        
-        // Create a new RestTemplate instance
-        RestTemplate restTemplate                       = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
-        List<ClientHttpRequestInterceptor> interceptors = new ArrayList<ClientHttpRequestInterceptor>();
-        interceptors.add(new MyClientHttpRequestInterceptor());
-        restTemplate.setInterceptors(interceptors);
         restTemplate.getMessageConverters().add(new SimpleXmlHttpMessageConverter());
         
         // Perform the HTTP GET request
-        ResponseEntity<ContactList> responseEntity = restTemplate.exchange(url,
+        ResponseEntity<ContactList> responseEntity = restTemplate.exchange(getUrl(),
                                                                            HttpMethod.GET,
                                                                            requestEntity,
                                                                            ContactList.class);
