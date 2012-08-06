@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<setting>
+    <baseUri>http://localhost:3000</baseUri>
+    <username>philipp</username>
+    <password>secret</password>
+</setting>
