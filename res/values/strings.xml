@@ -8,6 +8,7 @@
     <string name="url">Url</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="login">Login</string>
     <string name="enter_url_of_fat_free_crm">Enter URL of Fat Free CRM</string>
     <string name="enter_your_login_username">Enter your login username</string>
     <string name="enter_your_password">Enter your password</string>
