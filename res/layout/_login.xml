@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/black_gradient">
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sign_in_logo"
+        android:contentDescription="@string/sign_in_logo"
+        android:layout_margin="48dip">
+    </ImageView>
+    
+    <EditText
+        android:id="@+id/url"
+        android:layout_height="wrap_content"
+        android:layout_width="200dip"
+        android:singleLine="true"
+        android:hint="@string/url"
+        android:inputType="textUri" />
+    
+    <EditText
+        android:id="@+id/username"
+        android:layout_height="wrap_content"
+        android:layout_width="200dip"
+        android:singleLine="true"
+        android:hint="@string/username"
+        android:inputType="text" />
+    
+    <EditText
+        android:id="@+id/password"
+        android:layout_height="wrap_content"
+        android:layout_width="200dip"
+        android:singleLine="true"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:maxLines="1" />
+    
+    <Button
+        android:id="@+id/sign_in_button"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sign_in_button"
+        android:text="@string/login"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:layout_width="200dip"
+        android:layout_marginTop="24dip" />
+</LinearLayout>
