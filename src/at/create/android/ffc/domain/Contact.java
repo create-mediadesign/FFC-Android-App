@@ -153,4 +153,15 @@ public final class Contact {
     public String getSkype() {
         return skype;
     }
+    
+    /**
+     * @return the name (first name and last name)
+     */
+    public String getName() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(firstName);
+        sb.append(" ");
+        sb.append(lastName);
+        return sb.toString();
+    }
 }
