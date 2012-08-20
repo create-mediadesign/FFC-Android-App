@@ -18,3 +18,7 @@ Android version for the [Fat Free CRM](http://www.fatfreecrm.com) Ruby on Rails 
     * [Simple XML 2.6.6](http://simple.sourceforge.net/download.php)
     * [Spring Android Core 1.0.0](http://www.springsource.org/spring-android/news/1.0.0-released)
     * [Spring Android Rest Template 1.0.0](http://www.springsource.org/spring-android/news/1.0.0-released)
+
+## Testing
+
+Copy file "assets/setting.example.xml" to "assets/setting.xml" and edit the content. Run JUnit tests from within eclipse.
