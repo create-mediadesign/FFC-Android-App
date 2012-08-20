@@ -17,6 +17,7 @@ import at.create.android.ffc.http.MockHttpInputMessage;
  */
 @Root(name = "setting")
 public final class Setting {
+    public static final String SHARED_PREF = "setting";
     @Element
     private String baseUri;
     @Element
