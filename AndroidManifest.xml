@@ -27,6 +27,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name=".activity.ContactListActivity">
+        </activity>
     </application>
     
     <instrumentation android:name="android.test.InstrumentationTestRunner"

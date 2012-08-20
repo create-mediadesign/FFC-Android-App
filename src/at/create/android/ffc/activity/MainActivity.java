@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import at.create.android.ffc.R;
@@ -44,7 +45,9 @@ public class MainActivity extends Activity implements OnClickListener {
     @Override
     public void onClick(View v) {
         if (authenticate()) {
-            // Todo: List contacts.
+            Intent intent = new Intent(getBaseContext(),
+                                       ContactListActivity.class);
+            startActivity(intent);
         } else {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("Authentication");

@@ -5,4 +5,5 @@
     <string name="password">Password</string>
     <string name="login">Log in</string>
     <string name="sign_in_logo">Sign in logo</string>
+    <string name="no_items_found">No item found</string>
 </resources>
