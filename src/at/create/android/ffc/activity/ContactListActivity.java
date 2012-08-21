@@ -2,13 +2,18 @@ package at.create.android.ffc.activity;
 
 import java.util.List;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import at.create.android.ffc.R;
 import at.create.android.ffc.domain.Contact;
 import at.create.android.ffc.domain.Setting;
+import at.create.android.ffc.http.CookiePreserveHttpRequestInterceptor;
 import at.create.android.ffc.http.FetchContacts;
 
 /**
@@ -23,6 +28,32 @@ public final class ContactListActivity extends AbstractAsyncListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_list);
     }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.contact_list, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.logout:
+            CookiePreserveHttpRequestInterceptor.getInstance().clear();
+            Intent intent = new Intent(this,
+                                       MainActivity.class);
+            startActivity(intent);
+            break;
+        default:
+            break;
+        }
+        
+        return super.onOptionsItemSelected(item);
+    }
+    
+    @Override
+    public void onBackPressed() {}
     
     @Override
     public void onStart() {

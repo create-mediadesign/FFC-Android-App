@@ -8,4 +8,5 @@
     <string name="no_items_found">No items found</string>
     <string name="loading_please_wait">Loading. Please wait &#8230;</string>
     <string name="logout">Logout</string>
+    <string name="authentication_failed">Authentication failed</string>
 </resources>

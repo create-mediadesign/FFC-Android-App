@@ -14,6 +14,10 @@ import at.create.android.ffc.R;
 import at.create.android.ffc.domain.Setting;
 import at.create.android.ffc.http.FormBasedAuthentication;
 
+/**
+ * @author Philipp Ullmann
+ * Input of base URI, username and password, in order to perform a login.
+ */
 public class MainActivity extends Activity implements OnClickListener {
     private EditText          baseUri;
     private EditText          usernameField;
@@ -45,15 +49,14 @@ public class MainActivity extends Activity implements OnClickListener {
     @Override
     public void onClick(View v) {
         if (authenticate()) {
-            Intent intent = new Intent(getBaseContext(),
+            Intent intent = new Intent(this,
                                        ContactListActivity.class);
             startActivity(intent);
         } else {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-            alertDialog.setTitle("Authentication");
+            alertDialog.setTitle(getString(R.string.authentication_failed));
             alertDialog.setCancelable(true);
             alertDialog.setCanceledOnTouchOutside(true);
-            alertDialog.setMessage("failed");
             alertDialog.show();
         }
     }
