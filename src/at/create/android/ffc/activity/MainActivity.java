@@ -64,7 +64,7 @@ public class MainActivity extends Activity implements OnClickListener {
     }
     
     private void findViews() {
-        baseUriField       = (EditText) findViewById(R.id.base_uri);
+        baseUriField  = (EditText) findViewById(R.id.base_uri);
         usernameField = (EditText) findViewById(R.id.username);
         passwordField = (EditText) findViewById(R.id.password);
         loginButton   = (Button) findViewById(R.id.sign_in_button);
