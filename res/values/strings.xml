@@ -5,7 +5,6 @@
     <string name="password">Password</string>
     <string name="login">Log in</string>
     <string name="sign_in_logo">Sign in logo</string>
-    <string name="no_items_found">No items found</string>
     <string name="loading_please_wait">Loading. Please wait &#8230;</string>
     <string name="logout">Logout</string>
     <string name="authentication_failed">Authentication failed</string>
@@ -13,4 +12,5 @@
     <string name="base_uri_is_not_a_valid_uri">Base URI is not a valid URI</string>
     <string name="username_cant_be_blank">Username can\'t be blank</string>
     <string name="password_cant_be_blank">Password can\'t be blank</string>
+    <string name="avatar">Avatar</string>
 </resources>

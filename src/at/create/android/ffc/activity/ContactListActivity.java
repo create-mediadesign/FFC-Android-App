@@ -12,7 +12,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 import at.create.android.ffc.R;
 import at.create.android.ffc.domain.Contact;
 import at.create.android.ffc.domain.Setting;
@@ -30,7 +29,7 @@ public final class ContactListActivity extends AbstractAsyncListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.item_list);
+        setContentView(R.layout.list_view);
     }
     
     @Override
@@ -78,8 +77,6 @@ public final class ContactListActivity extends AbstractAsyncListActivity {
     @Override
     public void onStart() {
         super.onStart();
-        TextView noItemsFound = (TextView) findViewById(R.id.empty);
-        noItemsFound.setVisibility(View.INVISIBLE);
         new DownloadContactTask().execute();
     }
     
