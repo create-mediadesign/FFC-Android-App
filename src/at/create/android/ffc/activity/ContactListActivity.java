@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import at.create.android.ffc.R;
 import at.create.android.ffc.domain.Contact;
@@ -24,6 +25,7 @@ import at.create.android.ffc.http.FetchContacts;
  */
 public final class ContactListActivity extends AbstractAsyncListActivity {
     protected static final String TAG = ContactListActivity.class.getSimpleName();
+    private List<Contact> contacts;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,22 @@ public final class ContactListActivity extends AbstractAsyncListActivity {
     }
     
     @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        Intent intent = new Intent(getBaseContext(),
+                                   ContactDetailsActivity.class);
+        try {
+            intent.putExtra("contact",
+                            contacts.get(position).toXML());
+        } catch (Exception e) {
+            Log.e(TAG,
+                  e.getMessage(),
+                  e);
+        }
+        startActivity(intent);
+    }
+    
+    @Override
     public void onBackPressed() {}
     
     @Override
@@ -70,6 +88,7 @@ public final class ContactListActivity extends AbstractAsyncListActivity {
             return;
         }
         
+        this.contacts              = contacts;
         ContactListAdapter adapter = new ContactListAdapter(this,
                                                             R.layout.contact_item,
                                                             contacts);

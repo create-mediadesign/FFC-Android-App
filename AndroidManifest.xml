@@ -31,6 +31,10 @@
         <activity
             android:name=".activity.ContactListActivity">
         </activity>
+        
+        <activity
+            android:name=".activity.ContactDetailsActivity">
+        </activity>
     </application>
     
     <instrumentation android:name="android.test.InstrumentationTestRunner"
