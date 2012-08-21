@@ -7,4 +7,5 @@
     <string name="sign_in_logo">Sign in logo</string>
     <string name="no_items_found">No items found</string>
     <string name="loading_please_wait">Loading. Please wait &#8230;</string>
+    <string name="logout">Logout</string>
 </resources>
