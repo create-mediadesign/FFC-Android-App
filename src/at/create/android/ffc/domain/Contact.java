@@ -1,7 +1,15 @@
 package at.create.android.ffc.domain;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
+import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
+
+import at.create.android.ffc.http.MockHttpInputMessage;
 
 /**
  * @author Philipp Ullmann
@@ -163,5 +171,27 @@ public final class Contact {
         sb.append(" ");
         sb.append(lastName);
         return sb.toString();
+    }
+    
+    /**
+     * @return an XML represenation.
+     * @throws Exception 
+     */
+    public String toXML() throws Exception {
+        Serializer serializer     = new Persister();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        serializer.write(this, out);
+        return out.toString();
+    }
+    
+    /**
+     * @param xml
+     * @return contact
+     * @throws IOException
+     */
+    public static Contact fromXML(String xml) throws IOException {
+        SimpleXmlHttpMessageConverter xmlConverter = new SimpleXmlHttpMessageConverter();
+        MockHttpInputMessage inputMessage          = new MockHttpInputMessage(xml.getBytes("UTF-8"));
+        return (Contact) xmlConverter.read(Contact.class, inputMessage);
     }
 }

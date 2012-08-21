@@ -2,15 +2,10 @@ package at.create.android.ffc.test.domain;
 
 import java.io.IOException;
 
-import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
-
-
 import android.test.AndroidTestCase;
 import at.create.android.ffc.domain.Contact;
-import at.create.android.ffc.http.MockHttpInputMessage;
 
 public final class ContactXMLConversionTest extends AndroidTestCase {
-    private SimpleXmlHttpMessageConverter xmlConverter;
     private Contact contact;
     private final static String XML = "<contact>" +
                                           "<access>Public</access>" +
@@ -46,9 +41,7 @@ public final class ContactXMLConversionTest extends AndroidTestCase {
     
     @Override
     protected void setUp() throws Exception {
-        xmlConverter                      = new SimpleXmlHttpMessageConverter();
-        MockHttpInputMessage inputMessage = new MockHttpInputMessage(XML.getBytes("UTF-8"));
-        contact                           = (Contact) xmlConverter.read(Contact.class, inputMessage);
+        contact = Contact.fromXML(XML);
         super.setUp();
     }
     
