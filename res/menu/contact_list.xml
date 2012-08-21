@@ -4,5 +4,5 @@
     <item
         android:id="@+id/logout"
         android:title="@string/logout"
-        android:icon="@android:drawable/ic_menu_close_clear_cancel" />
+        android:icon="@drawable/logout" />
 </menu>
