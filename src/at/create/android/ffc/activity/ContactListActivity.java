@@ -51,7 +51,7 @@ public final class ContactListActivity extends AbstractAsyncListActivity {
         protected List<Contact> doInBackground(Void... params) {
             try {
                 SharedPreferences setting = getSharedPreferences(Setting.SHARED_PREF, 0);
-                FetchContacts fetcher     = new FetchContacts(setting.getString("url", ""));
+                FetchContacts fetcher     = new FetchContacts(setting.getString("baseUri", ""));
                 fetcher.fetch();
                 return fetcher.getContacts();
             } catch (Exception e) {

@@ -16,11 +16,11 @@
     </ImageView>
     
     <EditText
-        android:id="@+id/url"
+        android:id="@+id/base_uri"
         android:layout_height="wrap_content"
         android:layout_width="200dip"
         android:singleLine="true"
-        android:hint="@string/url"
+        android:hint="@string/base_uri"
         android:inputType="textUri" />
     
     <EditText

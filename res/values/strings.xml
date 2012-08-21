@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Fat Free CRM</string>
-    <string name="url">Url</string>
+    <string name="base_uri">Base URI</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Log in</string>

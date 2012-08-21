@@ -15,10 +15,10 @@ import at.create.android.ffc.domain.Setting;
 import at.create.android.ffc.http.FormBasedAuthentication;
 
 public class MainActivity extends Activity implements OnClickListener {
-    private EditText urlField;
-    private EditText usernameField;
-    private EditText passwordField;
-    private Button   loginButton;
+    private EditText          baseUri;
+    private EditText          usernameField;
+    private EditText          passwordField;
+    private Button            loginButton;
     private SharedPreferences setting;
     
     @Override
@@ -59,7 +59,7 @@ public class MainActivity extends Activity implements OnClickListener {
     }
     
     private void findViews() {
-        urlField      = (EditText) findViewById(R.id.url);
+        baseUri       = (EditText) findViewById(R.id.base_uri);
         usernameField = (EditText) findViewById(R.id.username);
         passwordField = (EditText) findViewById(R.id.password);
         loginButton   = (Button) findViewById(R.id.sign_in_button);
@@ -68,8 +68,8 @@ public class MainActivity extends Activity implements OnClickListener {
     private void storeInputFieldValues() {
         Editor editor = setting.edit();
         
-        editor.putString("url",
-                         urlField.getText().toString());
+        editor.putString("baseUri",
+                         baseUri.getText().toString());
         editor.putString("username",
                          usernameField.getText().toString());
         editor.putString("password",
@@ -79,7 +79,7 @@ public class MainActivity extends Activity implements OnClickListener {
     }
     
     private void restoreInputFieldValues() {
-        urlField.setText(setting.getString("url", ""));
+        baseUri.setText(setting.getString("baseUri", ""));
         usernameField.setText(setting.getString("username", ""));
         passwordField.setText(setting.getString("password", ""));
     }
@@ -87,13 +87,13 @@ public class MainActivity extends Activity implements OnClickListener {
     private boolean authenticate() {
         if (usernameField.length() == 0 ||
             passwordField.length() == 0 ||
-            urlField.length() == 0) {
+            baseUri.length() == 0) {
             return false;
         }
         
         FormBasedAuthentication auth = new FormBasedAuthentication(usernameField.getText().toString(),
                                                                    passwordField.getText().toString(),
-                                                                   urlField.getText().toString());
+                                                                   baseUri.getText().toString());
         return auth.authenticate();
     }
 }
