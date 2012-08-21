@@ -2,6 +2,8 @@ package at.create.android.ffc.domain;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.apache.commons.io.IOUtils;
 import org.simpleframework.xml.Element;
@@ -24,6 +26,57 @@ public final class Setting {
     private String username;
     @Element
     private String password;
+    private StringHelper sh;
+    
+    public Setting() {
+        sh = new StringHelper();
+    }
+    
+    /**
+     * @param baseUri
+     * @param username
+     * @param password
+     */
+    public Setting(String baseUri, String username, String password) {
+        this();
+        this.baseUri  = baseUri;
+        this.username = username;
+        this.password = password;
+    }
+    
+    /**
+     * @return true if base URI is blank, otherwise false is returned 
+     */
+    public boolean baseUriIsBlank() {
+        return sh.isBlank(baseUri);
+    }
+    
+    /**
+     * @return true if the base URI is a valid URL, otherwise false is returned.
+     */
+    public boolean baseUriIsAnUrl() {
+        try {
+            new URL(baseUri);
+        } catch (MalformedURLException e) {
+            return false;
+        }
+        
+        return true;
+    }
+    
+    /**
+     * @return true if username is blank, otherwise false is returned 
+     */
+    public boolean usernameIsBlank() {
+        return sh.isBlank(username);
+    }
+    
+    /**
+     * @return true if password is blank, otherwise false is returned 
+     */
+    public boolean passwordIsBlank() {
+        return sh.isBlank(password);
+    }
     
     /**
      * @return the baseUri
