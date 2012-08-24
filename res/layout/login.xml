@@ -3,19 +3,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/black_gradient">
+    android:orientation="vertical" >
     
-    <ImageView
-        android:id="@+id/logo"
-        android:contentDescription="@string/sign_in_logo"
-        style="@style/LoginIcon">
-    </ImageView>
-    
+    <TextView
+        android:id="@+id/tv_signup"
+        style="@style/SubtitleText"
+        android:layout_width="match_parent"
+        android:background="@drawable/sign_up_background"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textColor="@color/sign_up_text"
+        android:text="@string/login" />
+        
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1" >
         
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,45 +27,44 @@
             android:paddingBottom="10dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:paddingTop="5dp">
-        
-        <TextView
-            style="@style/HeaderTitleText"
-            android:text="@string/base_uri" />
-        
-        <EditText
-            android:id="@+id/base_uri"
-            style="@style/LoginEditText"
-            android:hint="@string/base_uri"
-            android:inputType="textUri" />
-        
-        <TextView
-            style="@style/HeaderTitleText"
-            android:paddingTop="10dp"
-            android:text="@string/username" />
-        
-        <EditText
-            android:id="@+id/username"
-            style="@style/LoginEditText"
-            android:hint="@string/username"
-            android:inputType="text" />
-        
-        <TextView
-            style="@style/HeaderTitleText"
-            android:paddingTop="10dp"
-            android:text="@string/password" />
-        
-        <EditText
-            android:id="@+id/password"
-            style="@style/LoginEditText"
-            android:hint="@string/password"
-            android:inputType="textPassword" />
-        
-        <Button
-            android:id="@+id/sign_in_button"
-            style="@style/LoginButton"
-            android:text="@string/login"
-            android:layout_marginTop="24dip" />
+            android:paddingTop="5dp" >
+            
+            <TextView
+                style="@style/HeaderTitleText"
+                android:text="@string/base_uri" />
+            
+            <EditText
+                android:id="@+id/base_uri"
+                style="@style/LoginEditText"
+                android:hint="@string/base_uri"
+                android:inputType="textUri" />
+            
+            <TextView
+                style="@style/HeaderTitleText"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:text="@string/username" />
+            
+            <EditText
+                android:id="@+id/username"
+                style="@style/LoginEditText"
+                android:hint="@string/username"
+                android:inputType="text" />
+            
+            <TextView
+                style="@style/HeaderTitleText"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:text="@string/password" />
+            
+            <EditText
+                android:id="@+id/password"
+                style="@style/LoginEditText"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:hint="@string/password" />
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>
+

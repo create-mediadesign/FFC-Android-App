@@ -1,43 +1,54 @@
 package at.create.android.ffc.activity;
 
+import roboguice.inject.InjectView;
+
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockAccountAuthenticatorActivity;
+
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.widget.EditText;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import at.create.android.ffc.R;
+import at.create.android.ffc.R.id;
+import at.create.android.ffc.R.menu;
 import at.create.android.ffc.domain.Setting;
 import at.create.android.ffc.http.FormBasedAuthentication;
+import at.create.android.ffc.ui.TextWatcherAdapter;
 
 /**
  * @author Philipp Ullmann
  * Input of base URI, username and password, in order to perform a login.
  */
-public class MainActivity extends Activity implements OnClickListener {
+public class MainActivity extends RoboSherlockAccountAuthenticatorActivity {
+    @InjectView(id.base_uri)
     private EditText          baseUriField;
+    @InjectView(id.username)
     private EditText          usernameField;
+    @InjectView(id.password)
     private EditText          passwordField;
-    private Button            loginButton;
+    private MenuItem          loginItem;
     private SharedPreferences setting;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        findViews();
+        setTextWatcher();
         setting = getSharedPreferences(Setting.SHARED_PREF, 0);
-        loginButton.setOnClickListener(this);
     }
     
     @Override
     protected void onResume() {
-        restoreInputFieldValues();
         super.onResume();
+        updateEnablement();
+        restoreInputFieldValues();
     }
     
     @Override
@@ -47,27 +58,34 @@ public class MainActivity extends Activity implements OnClickListener {
     }
     
     @Override
-    public void onClick(View v) {
-        if (inputIsValid()) {
-            if (authenticate()) {
-                Intent intent = new Intent(this,
-                                           ContactListActivity.class);
-                startActivity(intent);
-            } else {
-                AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-                alertDialog.setTitle(getString(R.string.authentication_failed));
-                alertDialog.setCancelable(true);
-                alertDialog.setCanceledOnTouchOutside(true);
-                alertDialog.show();
-            }
-        }
+    public boolean onCreateOptionsMenu(Menu optionMenu) {
+        getSupportMenuInflater().inflate(menu.login,
+                                         optionMenu);
+        loginItem = optionMenu.findItem(id.m_login);
+        return true;
     }
     
-    private void findViews() {
-        baseUriField  = (EditText) findViewById(R.id.base_uri);
-        usernameField = (EditText) findViewById(R.id.username);
-        passwordField = (EditText) findViewById(R.id.password);
-        loginButton   = (Button) findViewById(R.id.sign_in_button);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case id.m_login:
+                if (inputIsValid()) {
+                    if (authenticate()) {
+                        Intent intent = new Intent(this,
+                                                   ContactListActivity.class);
+                        startActivity(intent);
+                    } else {
+                        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+                        alertDialog.setTitle(getString(R.string.authentication_failed));
+                        alertDialog.setCancelable(true);
+                        alertDialog.setCanceledOnTouchOutside(true);
+                        alertDialog.show();
+                    }
+                }
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
     }
     
     private void storeInputFieldValues() {
@@ -90,12 +108,6 @@ public class MainActivity extends Activity implements OnClickListener {
     }
     
     private boolean authenticate() {
-        if (usernameField.length() == 0 ||
-            passwordField.length() == 0 ||
-            baseUriField.length() == 0) {
-            return false;
-        }
-        
         FormBasedAuthentication auth = new FormBasedAuthentication(usernameField.getText().toString(),
                                                                    passwordField.getText().toString(),
                                                                    baseUriField.getText().toString());
@@ -128,5 +140,29 @@ public class MainActivity extends Activity implements OnClickListener {
         }
         
         return isValid;
+    }
+    
+    private boolean loginEnabled() {
+        return !TextUtils.isEmpty(baseUriField.getText()) &&
+               !TextUtils.isEmpty(usernameField.getText()) &&
+               !TextUtils.isEmpty(passwordField.getText());
+    }
+    
+    private void updateEnablement() {
+        if (loginItem != null)
+            loginItem.setEnabled(loginEnabled());
+    }
+    
+    private void setTextWatcher() {
+        TextWatcher watcher = new TextWatcherAdapter() {
+            @Override
+            public void afterTextChanged(Editable gitDirEditText) {
+                updateEnablement();
+            }
+        };
+        
+        baseUriField.addTextChangedListener(watcher);
+        usernameField.addTextChangedListener(watcher);
+        passwordField.addTextChangedListener(watcher);
     }
 }

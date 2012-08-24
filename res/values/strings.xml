@@ -13,4 +13,5 @@
     <string name="username_cant_be_blank">Username can\'t be blank</string>
     <string name="password_cant_be_blank">Password can\'t be blank</string>
     <string name="avatar">Avatar</string>
+    <string name="log_in">LOG IN</string>
 </resources>
