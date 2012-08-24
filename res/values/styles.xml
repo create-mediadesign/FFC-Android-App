@@ -64,5 +64,13 @@
         <item name="android:padding">10dp</item>
         <item name="android:background">@drawable/sign_in_button</item>
     </style>
+    
+    <style name="LoginIcon" parent="Global">
+        <item name="android:background">@drawable/sign_in_logo</item>
+        <item name="android:layout_marginTop">30dip</item>
+        <item name="android:layout_marginBottom">30dip</item>
+        <item name="android:layout_marginLeft">48dip</item>
+        <item name="android:layout_marginRight">48dip</item>
+    </style>
 </resources>
 

@@ -8,11 +8,8 @@
     
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/sign_in_logo"
         android:contentDescription="@string/sign_in_logo"
-        android:layout_margin="48dip">
+        style="@style/LoginIcon">
     </ImageView>
     
     <ScrollView
