@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/email"
+        android:title="@string/send_email"
+        android:visible="false"
+        android:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_send" />
+        
+    <item
+        android:id="@+id/phone"
+        android:title="@string/phone_call"
+        android:visible="false"
+        android:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_call" />
+        
+     <item
+        android:id="@+id/phone_mobile"
+        android:title="@string/phone_call"
+        android:visible="false"
+        android:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_call" />
+</menu>

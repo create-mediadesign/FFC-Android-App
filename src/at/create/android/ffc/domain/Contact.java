@@ -9,6 +9,7 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
 
+import android.text.TextUtils;
 import at.create.android.ffc.http.MockHttpInputMessage;
 
 /**
@@ -171,6 +172,27 @@ public final class Contact {
         sb.append(" ");
         sb.append(lastName);
         return sb.toString();
+    }
+    
+    /**
+     * @return true if this contact has an email address, otherwise false is returned.
+     */
+    public boolean hasEmailAddress() {
+        return !TextUtils.isEmpty(email);
+    }
+    
+    /**
+     * @return true if this contact has a phone number, otherwise false is returned.
+     */
+    public boolean hasPhoneNumber() {
+        return !TextUtils.isEmpty(phone);
+    }
+    
+    /**
+     * @return true if this contact has a mobile phone number, otherwise false is returned.
+     */
+    public boolean hasMobilePhoneNumber() {
+        return !TextUtils.isEmpty(mobil);
     }
     
     /**

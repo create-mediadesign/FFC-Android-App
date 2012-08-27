@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Fat Free CRM</string>
+    <string name="ffc">FFC</string>
     <string name="base_uri">Base URI</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Log in</string>
     <string name="sign_in_logo">Sign in logo</string>
     <string name="loading_please_wait">Loading. Please wait &#8230;</string>
-    <string name="logout">Logout</string>
     <string name="authentication_failed">Authentication failed</string>
     <string name="base_uri_cant_be_blank">Base URI can\'t be blank</string>
     <string name="base_uri_is_not_a_valid_uri">Base URI is not a valid URI</string>
@@ -14,5 +14,8 @@
     <string name="password_cant_be_blank">Password can\'t be blank</string>
     <string name="avatar">Avatar</string>
     <string name="log_in">LOG IN</string>
+    <string name="log_out">LOG OUT</string>
     <string name="loading_of_contacts_failed">Loading of contacts failed</string>
+    <string name="send_email">Send email</string>
+    <string name="phone_call">Phone call</string>
 </resources>
