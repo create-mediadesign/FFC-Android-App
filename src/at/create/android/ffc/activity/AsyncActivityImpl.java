@@ -1,12 +1,13 @@
 package at.create.android.ffc.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import at.create.android.ffc.R;
 
 /**
  * @author Philipp Ullmann
- * Show or hide progress dialog.
+ * Implementation of the AsyncActivity interface.
  */
 public final class AsyncActivityImpl implements AsyncActivity {
     private ProgressDialog progressDialog;
@@ -42,5 +43,16 @@ public final class AsyncActivityImpl implements AsyncActivity {
         if (this.progressDialog != null && !this.destroyed) {
             this.progressDialog.dismiss();
         }
+    }
+    
+    @Override
+    public void showAlert(CharSequence message) {
+        AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
+        alertDialog.setTitle(message);
+        alertDialog.setCancelable(true);
+        alertDialog.setCanceledOnTouchOutside(true);
+        alertDialog.show();
+
+        
     }
 }

@@ -13,7 +13,6 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -71,7 +70,7 @@ public class MainActivity extends RoboSherlockAccountAuthenticatorActivity {
     public boolean onCreateOptionsMenu(Menu optionMenu) {
         getSupportMenuInflater().inflate(menu.login,
                                          optionMenu);
-        loginItem = optionMenu.findItem(id.m_login);
+        loginItem = optionMenu.findItem(id.login);
         updateEnablement();
         return true;
     }
@@ -79,7 +78,7 @@ public class MainActivity extends RoboSherlockAccountAuthenticatorActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case id.m_login:
+            case id.login:
                 if (inputIsValid()) {
                     authenticate();
                 }
@@ -143,11 +142,7 @@ public class MainActivity extends RoboSherlockAccountAuthenticatorActivity {
                                        ContactListActivity.class);
             startActivity(intent);
         } else {
-            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-            alertDialog.setTitle(getString(R.string.authentication_failed));
-            alertDialog.setCancelable(true);
-            alertDialog.setCanceledOnTouchOutside(true);
-            alertDialog.show();
+            asyncActivity.showAlert(getString(R.string.authentication_failed));
         }
     }
     

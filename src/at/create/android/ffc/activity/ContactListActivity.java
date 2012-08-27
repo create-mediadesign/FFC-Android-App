@@ -2,17 +2,21 @@ package at.create.android.ffc.activity;
 
 import java.util.List;
 
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockListActivity;
+
+import roboguice.util.RoboAsyncTask;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import at.create.android.ffc.R;
+import at.create.android.ffc.R.id;
+import at.create.android.ffc.R.menu;
 import at.create.android.ffc.domain.Contact;
 import at.create.android.ffc.domain.Setting;
 import at.create.android.ffc.http.CookiePreserveHttpRequestInterceptor;
@@ -22,37 +26,37 @@ import at.create.android.ffc.http.FetchContacts;
  * @author Philipp Ullmann
  * Listing of contacts.
  */
-public final class ContactListActivity extends AbstractAsyncListActivity {
+public final class ContactListActivity extends RoboSherlockListActivity {
     protected static final String TAG = ContactListActivity.class.getSimpleName();
-    private List<Contact> contacts;
+    private List<Contact>         contacts;
+    private AsyncActivityImpl     asyncActivity;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view);
+        asyncActivity = new AsyncActivityImpl(this);
     }
     
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.contact_list, menu);
-        return super.onCreateOptionsMenu(menu);
+    public boolean onCreateOptionsMenu(Menu optionMenu) {
+        getSupportMenuInflater().inflate(menu.contact_list,
+                                         optionMenu);
+        return true;
     }
     
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        case R.id.logout:
-            CookiePreserveHttpRequestInterceptor.getInstance().clear();
-            Intent intent = new Intent(this,
-                                       MainActivity.class);
-            startActivity(intent);
-            break;
+            case id.logout:
+                CookiePreserveHttpRequestInterceptor.getInstance().clear();
+                Intent intent = new Intent(this,
+                                           MainActivity.class);
+                startActivity(intent);
+            return true;
         default:
-            break;
+            return super.onOptionsItemSelected(item);
         }
-        
-        return super.onOptionsItemSelected(item);
     }
     
     @Override
@@ -77,7 +81,7 @@ public final class ContactListActivity extends AbstractAsyncListActivity {
     @Override
     public void onStart() {
         super.onStart();
-        new DownloadContactTask().execute();
+        loadContacts();
     }
     
     private void refreshStates(List<Contact> contacts) {
@@ -92,32 +96,32 @@ public final class ContactListActivity extends AbstractAsyncListActivity {
         setListAdapter(adapter);
     }
     
-    private class DownloadContactTask extends AsyncTask<Void, Void, List<Contact>> {
-        @Override
-        protected void onPreExecute() {
-            showLoadingProgressDialog();
-        }
+    private void loadContacts() {
+        asyncActivity.showLoadingProgressDialog();
         
-        @Override
-        protected List<Contact> doInBackground(Void... params) {
-            try {
+        RoboAsyncTask<List<Contact>> loadContactsTask = new RoboAsyncTask<List<Contact>>(this) {
+            @Override
+            public List<Contact> call() throws Exception {
                 SharedPreferences setting = getSharedPreferences(Setting.SHARED_PREF, 0);
                 FetchContacts fetcher     = new FetchContacts(setting.getString("baseUri", ""));
                 fetcher.fetch();
                 return fetcher.getContacts();
-            } catch (Exception e) {
-                Log.e(TAG,
-                      e.getMessage(),
-                      e);
             }
             
-            return null;
-        }
+            @Override
+            protected void onException(Exception e) throws RuntimeException {
+                asyncActivity.dismissProgressDialog();
+                Log.d(TAG, "Load contact exception", e);
+                asyncActivity.showAlert(getString(R.string.loading_of_contacts_failed));
+            }
+            
+            @Override
+            protected void onSuccess(List<Contact> contacts) throws Exception {
+                asyncActivity.dismissProgressDialog();
+                refreshStates(contacts);
+            }
+        };
         
-        @Override
-        protected void onPostExecute(List<Contact> result) {
-            dismissProgressDialog();
-            refreshStates(result);
-        }
+        loadContactsTask.execute();
     }
 }
