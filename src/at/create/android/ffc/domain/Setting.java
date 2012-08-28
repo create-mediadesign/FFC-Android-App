@@ -10,6 +10,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
 
+import android.text.TextUtils;
 import at.create.android.ffc.http.MockHttpInputMessage;
 
 /**
@@ -26,11 +27,6 @@ public final class Setting {
     private String username;
     @Element
     private String password;
-    private StringHelper sh;
-    
-    public Setting() {
-        sh = new StringHelper();
-    }
     
     /**
      * @param baseUri
@@ -38,7 +34,6 @@ public final class Setting {
      * @param password
      */
     public Setting(String baseUri, String username, String password) {
-        this();
         this.baseUri  = baseUri;
         this.username = username;
         this.password = password;
@@ -48,7 +43,7 @@ public final class Setting {
      * @return true if base URI is blank, otherwise false is returned 
      */
     public boolean baseUriIsBlank() {
-        return sh.isBlank(baseUri);
+        return TextUtils.isEmpty(baseUri);
     }
     
     /**
@@ -68,14 +63,14 @@ public final class Setting {
      * @return true if username is blank, otherwise false is returned 
      */
     public boolean usernameIsBlank() {
-        return sh.isBlank(username);
+        return TextUtils.isEmpty(username);
     }
     
     /**
      * @return true if password is blank, otherwise false is returned 
      */
     public boolean passwordIsBlank() {
-        return sh.isBlank(password);
+        return TextUtils.isEmpty(password);
     }
     
     /**
