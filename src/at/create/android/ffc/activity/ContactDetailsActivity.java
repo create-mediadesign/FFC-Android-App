@@ -27,6 +27,8 @@ public final class ContactDetailsActivity extends RoboSherlockActivity {
     private Contact               contact;
     @InjectView(R.id.name)
     private TextView              nameView;
+    @InjectView(R.id.title)
+    private TextView              title;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +94,7 @@ public final class ContactDetailsActivity extends RoboSherlockActivity {
     
     private void populateViews() {
         nameView.setText(contact.getName());
+        title.setText(contact.getTitle());
     }
     
     private void sendEmail() {

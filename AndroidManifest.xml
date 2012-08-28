@@ -17,7 +17,7 @@
     <application
         android:icon="@drawable/app_icon"
         android:label="@string/ffc"
-        android:theme="@style/Theme.GitHub">
+        android:theme="@style/Theme.FFC">
         
         <uses-library android:name="android.test.runner" />
         

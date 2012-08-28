@@ -11,7 +11,13 @@
         
         <TextView
             android:id="@+id/name"
-            style="@style/HeaderTitleText">
-        </TextView>
+            style="@style/HeaderTitleText" />
+        
+        <TextView
+            android:id="@+id/title"
+            style="@style/SubtitleText" />
+        
+        <TextView
+            style="@style/Separator"/>
     </LinearLayout>
 </ScrollView>
