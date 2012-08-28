@@ -13,7 +13,7 @@
         android:gravity="center"
         android:padding="5dp"
         android:textColor="@color/sign_up_text"
-        android:text="@string/login" />
+        android:text="@string/fill_out_to_sign_up" />
         
     <ScrollView
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:paddingBottom="10dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:paddingTop="5dp" >
+            android:paddingTop="5dp">
             
             <TextView
                 style="@style/HeaderTitleText"
@@ -37,7 +37,8 @@
                 android:id="@+id/base_uri"
                 style="@style/LoginEditText"
                 android:hint="@string/base_uri"
-                android:inputType="textUri" />
+                android:inputType="textUri"
+                android:focusable="false" />
             
             <TextView
                 style="@style/HeaderTitleText"
@@ -49,7 +50,8 @@
                 android:id="@+id/username"
                 style="@style/LoginEditText"
                 android:hint="@string/username"
-                android:inputType="text" />
+                android:inputType="text"
+                android:focusable="false" />
             
             <TextView
                 style="@style/HeaderTitleText"
@@ -62,7 +64,8 @@
                 style="@style/LoginEditText"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
-                android:hint="@string/password" />
+                android:hint="@string/password"
+                android:focusable="false" />
         </LinearLayout>
     </ScrollView>
 

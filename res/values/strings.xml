@@ -16,6 +16,8 @@
     <string name="log_in">LOG IN</string>
     <string name="log_out">LOG OUT</string>
     <string name="loading_of_contacts_failed">Loading of contacts failed</string>
-    <string name="send_email">Send email</string>
-    <string name="phone_call">Phone call</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="mobile">Mobile</string>
+    <string name="fill_out_to_sign_up">Fill out to sign up</string>
 </resources>

@@ -40,7 +40,6 @@ public final class ContactDetailsActivity extends RoboSherlockActivity {
     public boolean onCreateOptionsMenu(Menu optionMenu) {
         getSupportMenuInflater().inflate(menu.contact_details,
                                          optionMenu);
-        
         MenuItem emailItem       = optionMenu.findItem(R.id.email);
         MenuItem phoneItem       = optionMenu.findItem(R.id.phone);
         MenuItem phoneMobileItem = optionMenu.findItem(R.id.phone_mobile);
