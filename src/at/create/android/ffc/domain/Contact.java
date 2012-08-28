@@ -19,37 +19,37 @@ import at.create.android.ffc.http.MockHttpInputMessage;
 @Root(name = "contact", strict = false)
 public final class Contact {
     @Element
-    private Integer id;
+    private Integer id              = null;
     @Element(required = false)
-    private String  title;
+    private String  title           = null;
     @Element(required = false)
-    private String  department;
+    private String  department      = null;
     @Element(name = "first-name")
-    private String  firstName;
+    private String  firstName       = null;
     @Element(name = "last-name")
-    private String  lastName;
+    private String  lastName        = null;
     @Element(required = false)
-    private String  email;
+    private String  email           = null;
     @Element(required = false)
-    private String  phone;
+    private String  phone           = null;
     @Element(required = false)
-    private String  mobil;
+    private String  mobil           = null;
     @Element(required = false)
-    private String  fax;
+    private String  fax             = null;
     @Element(name = "born-on", required = false)
-    private String  bornOn;
+    private String  bornOn          = null;
     @Element(name = "background-info", required = false)
-    private String  backgroundInfo;
+    private String  backgroundInfo  = null;
     @Element(required = false)
-    private String  blog;
+    private String  blog            = null;
     @Element(required = false)
-    private String  linkedin;
+    private String  linkedin        = null;
     @Element(required = false)
-    private String  facebook;
+    private String  facebook        = null;
     @Element(required = false)
-    private String  twitter;
+    private String  twitter         = null;
     @Element(required = false)
-    private String  skype;
+    private String  skype           = null;
     
     /**
      * @return the id
@@ -174,6 +174,118 @@ public final class Contact {
         return sb.toString();
     }
     
+    /**
+     * @param id the id to set
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     * @param department the department to set
+     */
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    /**
+     * @param firstName the firstName to set
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * @param lastName the lastName to set
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @param phone the phone to set
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    /**
+     * @param mobil the mobil to set
+     */
+    public void setMobil(String mobil) {
+        this.mobil = mobil;
+    }
+
+    /**
+     * @param fax the fax to set
+     */
+    public void setFax(String fax) {
+        this.fax = fax;
+    }
+
+    /**
+     * @param bornOn the bornOn to set
+     */
+    public void setBornOn(String bornOn) {
+        this.bornOn = bornOn;
+    }
+
+    /**
+     * @param backgroundInfo the backgroundInfo to set
+     */
+    public void setBackgroundInfo(String backgroundInfo) {
+        this.backgroundInfo = backgroundInfo;
+    }
+
+    /**
+     * @param blog the blog to set
+     */
+    public void setBlog(String blog) {
+        this.blog = blog;
+    }
+
+    /**
+     * @param linkedin the linkedin to set
+     */
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
+    }
+
+    /**
+     * @param facebook the facebook to set
+     */
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    /**
+     * @param twitter the twitter to set
+     */
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    /**
+     * @param skype the skype to set
+     */
+    public void setSkype(String skype) {
+        this.skype = skype;
+    }
+
     /**
      * @return true if this contact has an email address, otherwise false is returned.
      */

@@ -28,6 +28,8 @@ public final class Setting {
     @Element
     private String password;
     
+    public Setting() {}
+    
     /**
      * @param baseUri
      * @param username
