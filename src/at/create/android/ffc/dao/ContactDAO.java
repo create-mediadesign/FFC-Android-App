@@ -1,7 +1,9 @@
 package at.create.android.ffc.dao;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.provider.BaseColumns;
+import at.create.android.ffc.domain.Contact;
 
 /**
  * @author Philipp Ullmann
@@ -69,5 +71,21 @@ public final class ContactDAO extends BaseDAO {
     @Override
     protected String tableName() {
         return TABLE_NAME;
+    }
+    
+    private Contact cursorToContact(Cursor cursor) {
+        Contact contact = new Contact();
+        
+        contact.setId(cursor.getInt(0));
+        contact.setTitle(cursor.getString(1));
+        contact.setFirstName(cursor.getString(2));
+        contact.setLastName(cursor.getString(3));
+        contact.setDepartment(cursor.getString(4));
+        contact.setEmail(cursor.getString(5));
+        contact.setPhone(cursor.getString(6));
+        contact.setMobil(cursor.getString(7));
+        contact.setFax(cursor.getString(8));
+        
+        return contact;
     }
 }
