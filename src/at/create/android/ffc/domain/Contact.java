@@ -2,6 +2,7 @@ package at.create.android.ffc.domain;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.sql.Date;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -37,7 +38,7 @@ public final class Contact {
     @Element(required = false)
     private String  fax             = null;
     @Element(name = "born-on", required = false)
-    private String  bornOn          = null;
+    private Date    bornOn          = null;
     @Element(name = "background-info", required = false)
     private String  backgroundInfo  = null;
     @Element(required = false)
@@ -117,7 +118,7 @@ public final class Contact {
     /**
      * @return the bornOn
      */
-    public String getBornOn() {
+    public Date getBornOn() {
         return bornOn;
     }
     
@@ -240,7 +241,7 @@ public final class Contact {
     /**
      * @param bornOn the bornOn to set
      */
-    public void setBornOn(String bornOn) {
+    public void setBornOn(Date bornOn) {
         this.bornOn = bornOn;
     }
 

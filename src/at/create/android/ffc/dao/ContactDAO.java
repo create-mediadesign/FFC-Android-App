@@ -3,6 +3,7 @@ package at.create.android.ffc.dao;
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.BaseColumns;
+import android.text.format.DateUtils;
 import at.create.android.ffc.domain.Contact;
 
 /**
@@ -39,24 +40,24 @@ public final class ContactDAO extends BaseDAO {
         String stringNotNull    = " STRING NOT NULL, ";
         String stringNull       = " STRING, ";
         
-        stmt.append("CREATE TABLE ");
-        stmt.append(TABLE_NAME).append(" (");
-        stmt.append(BaseColumns._ID).append(" INTEGER PRIMARY KEY AUTOINCREMENT, ");
-        stmt.append(TITLE).append(stringNull);
-        stmt.append(FIRST_NAME).append(stringNotNull);
-        stmt.append(LAST_NAME).append(stringNotNull);
-        stmt.append(DEPARTMENT).append(stringNull);
-        stmt.append(EMAIL).append(stringNull);
-        stmt.append(PHONE).append(stringNull);
-        stmt.append(MOBILE).append(stringNull);
-        stmt.append(FAX).append(stringNull);
-        stmt.append(BORN_ON).append(" DATETIME, ");
-        stmt.append(BACKGROUND_INFO).append(" TEXT, ");
-        stmt.append(BLOG).append(stringNull);
-        stmt.append(LINKEDIN).append(stringNull);
-        stmt.append(FACEBOOK).append(stringNull);
-        stmt.append(TWITTER).append(stringNull);
-        stmt.append(SKYPE).append(stringNull);
+        stmt.append("CREATE TABLE ").
+        append(TABLE_NAME).append(" (").
+        append(BaseColumns._ID).append(" INTEGER PRIMARY KEY AUTOINCREMENT, ").
+        append(TITLE).append(stringNull).
+        append(FIRST_NAME).append(stringNotNull).
+        append(LAST_NAME).append(stringNotNull).
+        append(DEPARTMENT).append(stringNull).
+        append(EMAIL).append(stringNull).
+        append(PHONE).append(stringNull).
+        append(MOBILE).append(stringNull).
+        append(FAX).append(stringNull).
+        append(BORN_ON).append(" DATE, ").
+        append(BACKGROUND_INFO).append(" TEXT, ").
+        append(BLOG).append(stringNull).
+        append(LINKEDIN).append(stringNull).
+        append(FACEBOOK).append(stringNull).
+        append(TWITTER).append(stringNull).
+        append(SKYPE).append(stringNull);
         
         return stmt.toString();
     }
