@@ -11,8 +11,4 @@ Android version for the [Fat Free CRM](http://www.fatfreecrm.com) Ruby on Rails 
 
 ## Building
 
-See [wiki](Building from Eclipse) for instructions on building from [Eclipse](http://www.eclipse.org).
-
-## Testing
-
-See [wiki](Testing).
+See [wiki](https://github.com/create-mediadesign/FFC-Android-App/wiki/Building-from-Eclipse) for instructions on building from [Eclipse](http://www.eclipse.org).
