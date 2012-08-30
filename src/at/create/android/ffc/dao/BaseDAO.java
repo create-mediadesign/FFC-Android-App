@@ -20,10 +20,7 @@ package at.create.android.ffc.dao;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDoneException;
 import android.database.sqlite.SQLiteStatement;
-import android.text.format.Time;
-import android.util.TimeFormatException;
 
 /**
  * @author Philipp Ullmann
@@ -56,27 +53,6 @@ public abstract class BaseDAO {
     }
     
     /**
-     * @return Max updatedAt DateTime value. If no entries exist Jan 1, 1970 is returned.
-     */
-    public Time lastUpdatedAt() {
-        String sql = "SELECT MAX(updatedAt) FROM " + tableName();
-        SQLiteStatement statement = db.compileStatement(sql);
-        Time time = new Time();
-        
-        try {
-            String value = statement.simpleQueryForString();
-            
-            if (value != null) {
-                time.parse3339(value);
-            }
-        } catch (TimeFormatException e) {
-        } catch (SQLiteDoneException e) {
-        }
-        
-        return time;
-    }
-    
-    /**
      * Deletes all rows.
      * @return the number of rows affected
      */
@@ -96,11 +72,10 @@ public abstract class BaseDAO {
     }
     
     protected void bindNullString(SQLiteStatement insert, int pos, String value) {
-        if (value != null) {
+        if (value != null)
             insert.bindString(pos, value);
-        } else {
+        else
             insert.bindNull(pos);
-        }
     }
     
     protected abstract String tableName();

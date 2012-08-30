@@ -33,9 +33,10 @@
     <string name="avatar">Avatar</string>
     <string name="log_in">LOG IN</string>
     <string name="log_out">LOG OUT</string>
-    <string name="loading_of_contacts_failed">Loading of contacts failed</string>
+    <string name="syncing_of_contacts_failed">Syncing of contacts failed</string>
     <string name="email">Email</string>
     <string name="phone">Phone</string>
     <string name="mobile">Mobile</string>
     <string name="fill_out_to_sign_up">Fill out to sign up</string>
+    <string name="sync">Sync</string>
 </resources>

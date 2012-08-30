@@ -34,6 +34,7 @@ import android.widget.ListView;
 import at.create.android.ffc.R;
 import at.create.android.ffc.R.id;
 import at.create.android.ffc.R.menu;
+import at.create.android.ffc.dao.ContactDAO;
 import at.create.android.ffc.domain.Contact;
 import at.create.android.ffc.domain.Setting;
 import at.create.android.ffc.http.CookiePreserveHttpRequestInterceptor;
@@ -47,12 +48,23 @@ public final class ContactListActivity extends RoboSherlockListActivity {
     protected static final String TAG = ContactListActivity.class.getSimpleName();
     private List<Contact>         contacts;
     private AsyncActivityImpl     asyncActivity;
+    private ContactDAO contactDAO = null;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view);
         asyncActivity = new AsyncActivityImpl(this);
+        contactDAO    = new ContactDAO(this);
+        contactDAO.open();
+    }
+    
+    @Override
+    protected void onDestroy() {
+        if (contactDAO != null)
+            contactDAO.close();
+        
+        super.onDestroy();
     }
     
     @Override
@@ -70,7 +82,10 @@ public final class ContactListActivity extends RoboSherlockListActivity {
                 Intent intent = new Intent(this,
                                            MainActivity.class);
                 startActivity(intent);
-            return true;
+                return true;
+            case id.sync:
+                syncContacts();
+                return true;
         default:
             return super.onOptionsItemSelected(item);
         }
@@ -114,6 +129,13 @@ public final class ContactListActivity extends RoboSherlockListActivity {
     }
     
     private void loadContacts() {
+        if (contactDAO.count() > 0)
+            refreshStates(contactDAO.all());
+        else
+            syncContacts();
+    }
+    
+    private void syncContacts() {
         asyncActivity.showLoadingProgressDialog();
         
         RoboAsyncTask<List<Contact>> loadContactsTask = new RoboAsyncTask<List<Contact>>(this) {
@@ -128,12 +150,16 @@ public final class ContactListActivity extends RoboSherlockListActivity {
             @Override
             protected void onException(Exception e) throws RuntimeException {
                 asyncActivity.dismissProgressDialog();
-                Log.d(TAG, "Load contact exception", e);
-                asyncActivity.showAlert(getString(R.string.loading_of_contacts_failed));
+                Log.d(TAG,
+                      "Syncing of contacts failed",
+                      e);
+                asyncActivity.showAlert(getString(R.string.syncing_of_contacts_failed));
             }
             
             @Override
             protected void onSuccess(List<Contact> contacts) throws Exception {
+                contactDAO.deleteAll();
+                contactDAO.save(contacts);
                 asyncActivity.dismissProgressDialog();
                 refreshStates(contacts);
             }

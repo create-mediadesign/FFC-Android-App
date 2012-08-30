@@ -103,7 +103,7 @@ public final class ContactTest extends AndroidTestCase {
     // fromXML
     
     public void testXMLDeserialization() throws IOException {
-        Contact contact = Contact.fromXML("<contact><first-name>Philipp</first-name><id>1</id><last-name>Ullmann</last-name></contact>");
+        contact = Contact.fromXML("<contact><first-name>Philipp</first-name><id>1</id><last-name>Ullmann</last-name></contact>");
         
         assertEquals(1,
                      (int) contact.getId());
@@ -111,5 +111,20 @@ public final class ContactTest extends AndroidTestCase {
                      contact.getFirstName());
         assertEquals("Ullmann",
                      contact.getLastName());
+    }
+    
+    // setBornOn
+    
+    public void testSetBornOnFromString() {
+        String date = "1981-03-11";
+        contact.setBornOn(date);
+        
+        assertEquals(date,
+                     contact.getBornOn().toString());
+    }
+    
+    public void testSetBornOnWithEmptyString() {
+        contact.setBornOn("");
+        assertNull(contact.getBornOn());
     }
 }

@@ -20,6 +20,9 @@ package at.create.android.ffc.domain;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -28,6 +31,7 @@ import org.simpleframework.xml.core.Persister;
 import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
 
 import android.text.TextUtils;
+import android.util.Log;
 import at.create.android.ffc.http.MockHttpInputMessage;
 
 /**
@@ -36,6 +40,7 @@ import at.create.android.ffc.http.MockHttpInputMessage;
  */
 @Root(name = "contact", strict = false)
 public final class Contact {
+    private static final String  TAG = Contact.class.getSimpleName();
     @Element
     private Integer id              = null;
     @Element(required = false)
@@ -198,112 +203,128 @@ public final class Contact {
     public void setId(Integer id) {
         this.id = id;
     }
-
+    
     /**
      * @param title the title to set
      */
     public void setTitle(String title) {
         this.title = title;
     }
-
+    
     /**
      * @param department the department to set
      */
     public void setDepartment(String department) {
         this.department = department;
     }
-
+    
     /**
      * @param firstName the firstName to set
      */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
+    
     /**
      * @param lastName the lastName to set
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
+    
     /**
      * @param email the email to set
      */
     public void setEmail(String email) {
         this.email = email;
     }
-
+    
     /**
      * @param phone the phone to set
      */
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
+    
     /**
      * @param mobil the mobil to set
      */
     public void setMobil(String mobil) {
         this.mobil = mobil;
     }
-
+    
     /**
      * @param fax the fax to set
      */
     public void setFax(String fax) {
         this.fax = fax;
     }
-
+    
     /**
      * @param bornOn the bornOn to set
      */
     public void setBornOn(Date bornOn) {
         this.bornOn = bornOn;
     }
-
+    
+    /**
+     * @param bornOn
+     */
+    public void setBornOn(String bornOn) {
+        if (!TextUtils.isEmpty(bornOn)) {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                this.bornOn = new Date(dateFormat.parse(bornOn).getTime());
+            } catch (ParseException e) {
+                Log.e(TAG,
+                      "Can not parse born on date: \"" + bornOn + "\"",
+                      e);
+            }
+        }
+    }
+    
     /**
      * @param backgroundInfo the backgroundInfo to set
      */
     public void setBackgroundInfo(String backgroundInfo) {
         this.backgroundInfo = backgroundInfo;
     }
-
+    
     /**
      * @param blog the blog to set
      */
     public void setBlog(String blog) {
         this.blog = blog;
     }
-
+    
     /**
      * @param linkedin the linkedin to set
      */
     public void setLinkedin(String linkedin) {
         this.linkedin = linkedin;
     }
-
+    
     /**
      * @param facebook the facebook to set
      */
     public void setFacebook(String facebook) {
         this.facebook = facebook;
     }
-
+    
     /**
      * @param twitter the twitter to set
      */
     public void setTwitter(String twitter) {
         this.twitter = twitter;
     }
-
+    
     /**
      * @param skype the skype to set
      */
     public void setSkype(String skype) {
         this.skype = skype;
     }
-
+    
     /**
      * @return true if this contact has an email address, otherwise false is returned.
      */
