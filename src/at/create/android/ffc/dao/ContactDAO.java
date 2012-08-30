@@ -113,6 +113,29 @@ public final class ContactDAO extends BaseDAO {
     }
     
     /**
+     * Search within first and last name columns.
+     * @param search Search value
+     * @return contacts
+     */
+    public List<Contact> findAllByFirstNameAndLastName(String search) {
+        StringBuilder where = new StringBuilder();
+        where.append(FIRST_NAME);
+        where.append(" LIKE ? OR ");
+        where.append(LAST_NAME);
+        where.append(" LIKE ?");
+        
+        Cursor cursor = db.query(TABLE_NAME,
+                                 columnNames(),
+                                 where.toString(),
+                                 new String[] { "%" + search + "%", "%" + search + "%"},
+                                 null,
+                                 null,
+                                 FIRST_NAME);
+        
+        return cursorToContacts(cursor);
+    }
+    
+    /**
      * Saves contacts.
      * @param contacts
      * @return the amount of rows created
