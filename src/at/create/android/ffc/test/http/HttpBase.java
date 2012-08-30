@@ -28,7 +28,7 @@ public abstract class HttpBase extends AndroidTestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        setting = Setting.load(HttpBase.class.getResourceAsStream("/assets/setting.xml"));
+        setting = Setting.load(HttpBase.class.getResourceAsStream("/assets/test_setting.xml"));
         authenticate();
     }
     
