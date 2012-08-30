@@ -32,7 +32,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import at.create.android.ffc.R;
-import at.create.android.ffc.R.id;
 import at.create.android.ffc.R.menu;
 import at.create.android.ffc.dao.ContactDAO;
 import at.create.android.ffc.domain.Contact;
@@ -77,14 +76,17 @@ public final class ContactListActivity extends RoboSherlockListActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case id.logout:
+            case R.id.logout:
                 CookiePreserveHttpRequestInterceptor.getInstance().clear();
                 Intent intent = new Intent(this,
                                            MainActivity.class);
                 startActivity(intent);
                 return true;
-            case id.sync:
+            case R.id.sync:
                 syncContacts();
+                return true;
+            case R.id.search:
+                onSearchRequested();
                 return true;
         default:
             return super.onOptionsItemSelected(item);

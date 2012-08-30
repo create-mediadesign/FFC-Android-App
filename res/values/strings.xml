@@ -39,4 +39,5 @@
     <string name="mobile">Mobile</string>
     <string name="fill_out_to_sign_up">Fill out to sign up</string>
     <string name="sync">Sync</string>
+    <string name="search">Search</string>
 </resources>
