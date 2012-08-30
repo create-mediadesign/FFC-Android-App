@@ -40,6 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
             android:paddingBottom="10dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
@@ -53,8 +55,7 @@
                 android:id="@+id/base_uri"
                 style="@style/LoginEditText"
                 android:hint="@string/base_uri"
-                android:inputType="textUri"
-                android:focusable="false" />
+                android:inputType="textUri" />
             
             <TextView
                 style="@style/Header"
@@ -66,8 +67,7 @@
                 android:id="@+id/username"
                 style="@style/LoginEditText"
                 android:hint="@string/username"
-                android:inputType="text"
-                android:focusable="false" />
+                android:inputType="text" />
             
             <TextView
                 style="@style/Header"
@@ -80,8 +80,7 @@
                 style="@style/LoginEditText"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
-                android:hint="@string/password"
-                android:focusable="false" />
+                android:hint="@string/password" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
