@@ -16,25 +16,16 @@
   You should have received a copy of the GNU Affero General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/email"
-        android:title="@string/email"
-        android:visible="false"
-        android:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_send" />
-        
-    <item
-        android:id="@+id/phone"
-        android:title="@string/phone"
-        android:visible="false"
-        android:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_call" />
-        
-     <item
-        android:id="@+id/phone_mobile"
-        android:title="@string/mobile"
-        android:visible="false"
-        android:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_call" />
-</menu>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/sign_up_bg_bottom" />
+        </shape>
+    </item>
+    
+    <item android:bottom="1dp">
+        <shape>
+            <solid android:color="@color/sign_up_bg" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<!--
+  Fat Free CRM Android App
+  Copyright 2012 create mediadesign GmbH
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
     
     <TextView
         android:id="@+id/tv_signup"
-        style="@style/SubtitleText"
+        style="@style/Subtitle"
         android:layout_width="match_parent"
-        android:background="@drawable/sign_up_background"
+        android:background="@drawable/sign_up_bg"
         android:gravity="center"
         android:padding="5dp"
         android:textColor="@color/sign_up_text"
@@ -30,7 +46,7 @@
             android:paddingTop="5dp">
             
             <TextView
-                style="@style/HeaderTitleText"
+                style="@style/Header"
                 android:text="@string/base_uri" />
             
             <EditText
@@ -41,7 +57,7 @@
                 android:focusable="false" />
             
             <TextView
-                style="@style/HeaderTitleText"
+                style="@style/Header"
                 android:paddingRight="5dp"
                 android:paddingTop="10dp"
                 android:text="@string/username" />
@@ -54,7 +70,7 @@
                 android:focusable="false" />
             
             <TextView
-                style="@style/HeaderTitleText"
+                style="@style/Header"
                 android:paddingRight="5dp"
                 android:paddingTop="10dp"
                 android:text="@string/password" />
@@ -68,6 +84,5 @@
                 android:focusable="false" />
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>
 

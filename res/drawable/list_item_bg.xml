@@ -16,25 +16,7 @@
   You should have received a copy of the GNU Affero General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/email"
-        android:title="@string/email"
-        android:visible="false"
-        android:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_send" />
-        
-    <item
-        android:id="@+id/phone"
-        android:title="@string/phone"
-        android:visible="false"
-        android:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_call" />
-        
-     <item
-        android:id="@+id/phone_mobile"
-        android:title="@string/mobile"
-        android:visible="false"
-        android:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_call" />
-</menu>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/bg_selected" android:state_pressed="true" />
+    <item android:drawable="@color/bg"/>
+</selector>

@@ -1,3 +1,20 @@
+/*
+ * Fat Free CRM Android App
+ * Copyright 2012 create mediadesign GmbH
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 package at.create.android.ffc.activity;
 
 import roboguice.inject.InjectView;
@@ -21,7 +38,6 @@ import at.create.android.ffc.R.id;
 import at.create.android.ffc.R.menu;
 import at.create.android.ffc.domain.Setting;
 import at.create.android.ffc.http.FormBasedAuthentication;
-import at.create.android.ffc.ui.TextWatcherAdapter;
 
 /**
  * @author Philipp Ullmann
@@ -186,9 +202,15 @@ public class MainActivity extends RoboSherlockAccountAuthenticatorActivity {
     }
     
     private void setTextWatcher() {
-        TextWatcher watcher = new TextWatcherAdapter() {
+        TextWatcher watcher = new TextWatcher() {
             @Override
-            public void afterTextChanged(Editable gitDirEditText) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            
+            @Override
+            public void afterTextChanged(Editable s) {
                 updateEnablement();
             }
         };

@@ -16,25 +16,34 @@
   You should have received a copy of the GNU Affero General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/edit_text_outer" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+    
     <item
-        android:id="@+id/email"
-        android:title="@string/email"
-        android:visible="false"
-        android:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_send" />
-        
+        android:bottom="1dp"
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp">
+        <shape>
+            <solid android:color="@color/edit_text_inner" />
+            <corners android:radius="1dp" />
+        </shape>
+    </item>
+    
     <item
-        android:id="@+id/phone"
-        android:title="@string/phone"
-        android:visible="false"
-        android:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_call" />
-        
-     <item
-        android:id="@+id/phone_mobile"
-        android:title="@string/mobile"
-        android:visible="false"
-        android:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_call" />
-</menu>
+        android:bottom="2dp"
+        android:left="2dp"
+        android:right="2dp"
+        android:top="2dp">
+        <shape>
+            <solid android:color="@color/edit_text_bg" />
+            <corners android:radius="1dp" />
+        </shape>
+    </item>
+</layer-list>
+

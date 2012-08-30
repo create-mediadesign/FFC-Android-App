@@ -16,25 +16,27 @@
   You should have received a copy of the GNU Affero General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/actionbar_bg_top" />
+        </shape>
+    </item>
+    
+    <item android:top="1dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/actionbar_bg_bottom" />
+        </shape>
+    </item>
+    
     <item
-        android:id="@+id/email"
-        android:title="@string/email"
-        android:visible="false"
-        android:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_send" />
-        
-    <item
-        android:id="@+id/phone"
-        android:title="@string/phone"
-        android:visible="false"
-        android:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_call" />
-        
-     <item
-        android:id="@+id/phone_mobile"
-        android:title="@string/mobile"
-        android:visible="false"
-        android:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_call" />
-</menu>
+        android:bottom="1dp"
+        android:top="1dp">
+        <shape>
+            <gradient
+                android:angle="270"
+                android:endColor="@color/actionbar_bg_end"
+                android:startColor="@color/actionbar_bg_start" />
+        </shape>
+    </item>
+</layer-list>
