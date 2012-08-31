@@ -32,7 +32,7 @@ import at.create.android.ffc.domain.ContactList;
  * Fetches contacts from "/contacts"
  */
 public final class FetchContacts extends HttpBase {
-    private static final String PATH = "/contacts.xml";
+    private static final String PATH = "/contacts.xml?per_page=all";
     private ContactList contactList  = null;
     
     public FetchContacts(String baseUri) {
