@@ -64,23 +64,25 @@ public final class ContactDAO extends BaseDAO {
         String stringNull       = " STRING, ";
         
         stmt.append("CREATE TABLE ").
-        append(TABLE_NAME).append(" (").
-        append(BaseColumns._ID).append(" INTEGER PRIMARY KEY AUTOINCREMENT, ").
-        append(TITLE).append(stringNull).
-        append(FIRST_NAME).append(stringNotNull).
-        append(LAST_NAME).append(stringNotNull).
-        append(DEPARTMENT).append(stringNull).
-        append(EMAIL).append(stringNull).
-        append(PHONE).append(stringNull).
-        append(MOBILE).append(stringNull).
-        append(FAX).append(stringNull).
-        append(BORN_ON).append(" DATE, ").
-        append(BACKGROUND_INFO).append(" TEXT, ").
-        append(BLOG).append(stringNull).
-        append(LINKEDIN).append(stringNull).
-        append(FACEBOOK).append(stringNull).
-        append(TWITTER).append(stringNull).
-        append(SKYPE).append(" STRING)");
+             append(TABLE_NAME).
+             append(" (").
+             append(BaseColumns._ID).
+             append(" INTEGER PRIMARY KEY AUTOINCREMENT, ").
+             append(TITLE).append(stringNull).
+             append(FIRST_NAME).append(stringNotNull).
+             append(LAST_NAME).append(stringNotNull).
+             append(DEPARTMENT).append(stringNull).
+             append(EMAIL).append(stringNull).
+             append(PHONE).append(stringNull).
+             append(MOBILE).append(stringNull).
+             append(FAX).append(stringNull).
+             append(BORN_ON).append(" DATE, ").
+             append(BACKGROUND_INFO).append(" TEXT, ").
+             append(BLOG).append(stringNull).
+             append(LINKEDIN).append(stringNull).
+             append(FACEBOOK).append(stringNull).
+             append(TWITTER).append(stringNull).
+             append(SKYPE).append(" STRING)");
         
         return stmt.toString();
     }
@@ -119,10 +121,10 @@ public final class ContactDAO extends BaseDAO {
      */
     public List<Contact> findAllByFirstNameAndLastName(String search) {
         StringBuilder where = new StringBuilder();
-        where.append(FIRST_NAME);
-        where.append(" LIKE ? OR ");
-        where.append(LAST_NAME);
-        where.append(" LIKE ?");
+        where.append(FIRST_NAME).
+              append(" LIKE ? OR ").
+              append(LAST_NAME).
+              append(" LIKE ?");
         
         Cursor cursor = db.query(TABLE_NAME,
                                  columnNames(),
@@ -255,23 +257,23 @@ public final class ContactDAO extends BaseDAO {
         String delimiter   = ", ";
         
         stmt.append("INSERT INTO ").
-        append(TABLE_NAME).append(" (").
-        append(TITLE).append(delimiter).
-        append(FIRST_NAME).append(delimiter).
-        append(LAST_NAME).append(delimiter).
-        append(DEPARTMENT).append(delimiter).
-        append(EMAIL).append(delimiter).
-        append(PHONE).append(delimiter).
-        append(MOBILE).append(delimiter).
-        append(FAX).append(delimiter).
-        append(BORN_ON).append(delimiter).
-        append(BACKGROUND_INFO).append(delimiter).
-        append(BLOG).append(delimiter).
-        append(LINKEDIN).append(delimiter).
-        append(FACEBOOK).append(delimiter).
-        append(TWITTER).append(delimiter).
-        append(SKYPE).append(") ").
-        append("VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+             append(TABLE_NAME).append(" (").
+             append(TITLE).append(delimiter).
+             append(FIRST_NAME).append(delimiter).
+             append(LAST_NAME).append(delimiter).
+             append(DEPARTMENT).append(delimiter).
+             append(EMAIL).append(delimiter).
+             append(PHONE).append(delimiter).
+             append(MOBILE).append(delimiter).
+             append(FAX).append(delimiter).
+             append(BORN_ON).append(delimiter).
+             append(BACKGROUND_INFO).append(delimiter).
+             append(BLOG).append(delimiter).
+             append(LINKEDIN).append(delimiter).
+             append(FACEBOOK).append(delimiter).
+             append(TWITTER).append(delimiter).
+             append(SKYPE).append(") ").
+             append("VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         
         return db.compileStatement(stmt.toString());
     }

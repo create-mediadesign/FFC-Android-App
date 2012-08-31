@@ -22,7 +22,6 @@
     <string name="base_uri">Base URI</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="login">Log in</string>
     <string name="sign_in_logo">Sign in logo</string>
     <string name="loading_please_wait">Loading. Please wait &#8230;</string>
     <string name="authentication_failed">Authentication failed</string>
@@ -32,7 +31,7 @@
     <string name="password_cant_be_blank">Password can\'t be blank</string>
     <string name="avatar">Avatar</string>
     <string name="log_in">LOG IN</string>
-    <string name="log_out">LOG OUT</string>
+    <string name="logout">Logout</string>
     <string name="syncing_of_contacts_failed">Syncing of contacts failed</string>
     <string name="email">Email</string>
     <string name="phone">Phone</string>

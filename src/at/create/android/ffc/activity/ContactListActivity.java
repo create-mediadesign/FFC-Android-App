@@ -25,6 +25,7 @@ import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockListAct
 
 import roboguice.util.RoboAsyncTask;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -44,10 +45,10 @@ import at.create.android.ffc.http.FetchContacts;
  * Listing of contacts.
  */
 public final class ContactListActivity extends RoboSherlockListActivity {
-    protected static final String TAG = ContactListActivity.class.getSimpleName();
-    private List<Contact>         contacts;
-    private AsyncActivityImpl     asyncActivity;
-    private ContactDAO contactDAO = null;
+    protected static final String TAG           = ContactListActivity.class.getSimpleName();
+    private ContactDAO            contactDAO    = null;
+    private List<Contact>         contacts      = null;
+    private AsyncActivityImpl     asyncActivity = null;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +84,7 @@ public final class ContactListActivity extends RoboSherlockListActivity {
                 startActivity(intent);
                 return true;
             case R.id.sync:
-                syncContacts();
+                contactSync();
                 return true;
             case R.id.search:
                 onSearchRequested();
@@ -115,29 +116,40 @@ public final class ContactListActivity extends RoboSherlockListActivity {
     @Override
     public void onStart() {
         super.onStart();
-        loadContacts();
+        
+        if (getIntent().getAction() != null &&
+            getIntent().getAction().equals(Intent.ACTION_SEARCH)) {
+            contactSearch(getIntent().getStringExtra(SearchManager.QUERY));
+            refreshList();
+        } else {
+            if (contactDAO.count() > 0) {
+                contactLoadAllFromDB();
+                refreshList();
+            } else {
+                contactSync();
+            }
+        }
     }
     
-    private void refreshStates(List<Contact> contacts) {
-        if (contacts == null) {
+    private void refreshList() {
+        if (contacts == null)
             return;
-        }
         
-        this.contacts              = contacts;
         ContactListAdapter adapter = new ContactListAdapter(this,
                                                             R.layout.contact_item,
                                                             contacts);
         setListAdapter(adapter);
     }
     
-    private void loadContacts() {
-        if (contactDAO.count() > 0)
-            refreshStates(contactDAO.all());
-        else
-            syncContacts();
+    private void contactLoadAllFromDB() {
+        contacts = contactDAO.all();
     }
     
-    private void syncContacts() {
+    private void contactSearch(String searchTerm) {
+        contacts = contactDAO.findAllByFirstNameAndLastName(searchTerm);
+    }
+    
+    private void contactSync() {
         asyncActivity.showLoadingProgressDialog();
         
         RoboAsyncTask<List<Contact>> loadContactsTask = new RoboAsyncTask<List<Contact>>(this) {
@@ -163,7 +175,8 @@ public final class ContactListActivity extends RoboSherlockListActivity {
                 contactDAO.deleteAll();
                 contactDAO.save(contacts);
                 asyncActivity.dismissProgressDialog();
-                refreshStates(contacts);
+                contactLoadAllFromDB();
+                refreshList();
             }
         };
         
