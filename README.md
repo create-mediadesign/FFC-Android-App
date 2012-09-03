@@ -2,6 +2,8 @@
 
 The Fat Free CRM mobile app is an extension to your [Fat Free CRM web application](http://www.fatfreecrm.com) and lets you access your CRM while you are on the go. Log in, search for your desired contacts and give them a quick call or shoot them an email. This app provides the most necessary information while you are on your way. We are still improving this application, so stay tuned for new updates yet to come.
 
+Please mind that the app currently only works with the newest master branch of the [Fat Free CRM web application](http://www.fatfreecrm.com).
+
 # App Screenshots
 
 ![Start screen](https://github.com/create-mediadesign/FFC-Android-App/raw/master/doc/images/login.png)&nbsp;
