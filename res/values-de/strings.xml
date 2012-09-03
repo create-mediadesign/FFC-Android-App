@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Fat Free CRM Android App
+  Copyright 2012 create mediadesign GmbH
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+    <!-- Main -->
+    <string name="app_name">Fat Free CRM</string>
+    <string name="ffc">FFC</string>
+    <string name="loading_please_wait">Lädt. Bitte warten &#8230;</string>
+    <string name="log_in">ANMELDEN</string>
+    <string name="logout">Abmelden</string>
+    <string name="search">Suchen</string>
+    
+    <!-- Login -->
+    <string name="base_uri">Basis URI</string>
+    <string name="username">Benutzername</string>
+    <string name="password">Passwort</string>
+    <string name="fill_out_to_sign_up">Anmeldeformular ausfüllen</string>
+    <string name="sign_in_logo">Anmelde Bild</string>
+    
+    <!-- Error messages -->
+    <string name="authentication_failed">Anmeldung fehlgeschlagen</string>
+    <string name="base_uri_cant_be_blank">Basis URI darf nicht leer sein</string>
+    <string name="base_uri_is_not_a_valid_uri">Base URI ist keine gültige URI</string>
+    <string name="username_cant_be_blank">Benutzername darf nicht leer sein</string>
+    <string name="password_cant_be_blank">Passwort darf nicht leer sein</string>
+    
+    <!-- Contacts -->
+    <string name="syncing_of_contacts_failed">Synchronisierung der Kontakte ist fehlgeschlagen</string>
+    <string name="email">Email</string>
+    <string name="phone">Telefon</string>
+    <string name="mobile">Handy</string>
+    <string name="sync">Synchronisieren</string>
+</resources>
