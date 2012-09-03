@@ -1,13 +1,13 @@
 # Fat Free CRM Android App
 
-Android version for the [Fat Free CRM](http://www.fatfreecrm.com) Ruby on Rails open source web application. The targets for the near future are:
+The [Fat Free CRM](http://www.fatfreecrm.com) mobile app lets you access your CRM while you are on the go. Log in, search for your desired contacts and give them a quick call or shoot them an email. This app provides the most necessary information while you are on your way. We are still improving this application, so stay tuned for new updates yet to come.
 
-* Form based login
-* Logout
-* Listing and searching for contacts
-* Displaying of contact details
-* Sending email to contacts
-* Making phone calls to contacts
+# App Screenshots
+
+![Start screen](https://github.com/create-mediadesign/FFC-Android-App/raw/master/doc/images/login.png)&nbsp;
+![Start screen](https://github.com/create-mediadesign/FFC-Android-App/raw/master/doc/images/contact\_list.png)&nbsp;
+![Start screen](https://github.com/create-mediadesign/FFC-Android-App/raw/master/doc/images/contact\_search.png)&nbsp;
+![Start screen](https://github.com/create-mediadesign/FFC-Android-App/raw/master/doc/images/contact\_details.png)
 
 ## Building
 
