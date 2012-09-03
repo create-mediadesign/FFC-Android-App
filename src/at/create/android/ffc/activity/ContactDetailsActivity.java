@@ -56,6 +56,14 @@ public final class ContactDetailsActivity extends RoboSherlockActivity {
     }
     
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getBaseContext(),
+                                   ContactListActivity.class);
+        startActivity(intent);
+    }
+    
+    @Override
     public boolean onCreateOptionsMenu(Menu optionMenu) {
         getSupportMenuInflater().inflate(menu.contact_details,
                                          optionMenu);
