@@ -81,4 +81,17 @@ public class CookiePreserveHttpRequestInterceptor implements ClientHttpRequestIn
         return cookies != null &&
                !cookies.isEmpty();
     }
+    
+    /**
+     * @param name
+     * @return true, if a cookie with the given name exists, otherwise false is returned.
+     */
+    public boolean hasCookieWithName(String name) {
+        for (String cookie : cookies) {
+            if (cookie.contains(name))
+                return true;
+        }
+        
+        return false;
+    }
 }

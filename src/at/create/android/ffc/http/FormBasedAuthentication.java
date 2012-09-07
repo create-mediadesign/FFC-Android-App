@@ -17,8 +17,6 @@
  */
 package at.create.android.ffc.http;
 
-import java.net.URI;
-
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -60,8 +58,8 @@ public final class FormBasedAuthentication extends HttpBase {
         formData.add("authentication[remember_me]", "1");
         
         restTemplate.getMessageConverters().add(new FormHttpMessageConverter());
-        URI uri = restTemplate.postForLocation(getUrl(), formData);
+        restTemplate.postForLocation(getUrl(), formData);
         
-        return !uri.getPath().equals("/login");
+        return CookiePreserveHttpRequestInterceptor.getInstance().hasCookieWithName("user_credentials");
     }
 }
