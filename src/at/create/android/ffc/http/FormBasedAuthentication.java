@@ -17,7 +17,11 @@
  */
 package at.create.android.ffc.http;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.FormHttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
@@ -60,6 +64,18 @@ public final class FormBasedAuthentication extends HttpBase {
         restTemplate.getMessageConverters().add(new FormHttpMessageConverter());
         restTemplate.postForLocation(getUrl(), formData);
         
-        return CookiePreserveHttpRequestInterceptor.getInstance().hasCookieWithName("user_credentials");
+        if (CookiePreserveHttpRequestInterceptor.getInstance().hasCookieWithName("user_credentials")) {
+            return true;
+        // Try with another method
+        } else {
+            restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+            HttpEntity<?> requestEntity           = new HttpEntity<Object>(requestHeaders);
+            ResponseEntity<String> responseEntity = restTemplate.exchange(baseUri,
+                                                                          HttpMethod.GET,
+                                                                          requestEntity,
+                                                                          String.class);
+            
+            return !responseEntity.getBody().toString().contains("authentication[username]");
+        }
     }
 }
