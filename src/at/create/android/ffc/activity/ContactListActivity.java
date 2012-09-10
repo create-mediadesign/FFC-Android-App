@@ -79,6 +79,7 @@ public final class ContactListActivity extends RoboSherlockListActivity {
         switch (item.getItemId()) {
             case R.id.logout:
                 CookiePreserveHttpRequestInterceptor.getInstance().clear();
+                contactDAO.deleteAll();
                 Intent intent = new Intent(this,
                                            MainActivity.class);
                 startActivity(intent);
