@@ -56,7 +56,7 @@ public final class Contact {
     @Element(required = false)
     private String  phone           = null;
     @Element(required = false)
-    private String  mobil           = null;
+    private String  mobile          = null;
     @Element(required = false)
     private String  fax             = null;
     @Element(name = "born-on", required = false)
@@ -124,10 +124,10 @@ public final class Contact {
     }
     
     /**
-     * @return the mobil
+     * @return the mobile
      */
-    public String getMobil() {
-        return mobil;
+    public String getMobile() {
+        return mobile;
     }
     
     /**
@@ -247,10 +247,10 @@ public final class Contact {
     }
     
     /**
-     * @param mobil the mobil to set
+     * @param mobile the mobile to set
      */
-    public void setMobil(String mobil) {
-        this.mobil = mobil;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
     
     /**
@@ -343,7 +343,7 @@ public final class Contact {
      * @return true if this contact has a mobile phone number, otherwise false is returned.
      */
     public boolean hasMobilePhoneNumber() {
-        return !TextUtils.isEmpty(mobil);
+        return !TextUtils.isEmpty(mobile);
     }
     
     /**

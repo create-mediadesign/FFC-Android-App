@@ -80,12 +80,12 @@ public final class ContactTest extends AndroidTestCase {
     }
     
     public void testHasMobilePhoneNumberIfEmpty() throws IOException {
-        contact.setMobil("");
+        contact.setMobile("");
         assertFalse(contact.hasMobilePhoneNumber());
     }
     
     public void testHasMobilePhoneNumberWithValue() throws IOException {
-        contact.setMobil("+43111111");
+        contact.setMobile("+43111111");
         assertTrue(contact.hasMobilePhoneNumber());
     }
     

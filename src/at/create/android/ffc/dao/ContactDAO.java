@@ -154,7 +154,7 @@ public final class ContactDAO extends BaseDAO {
             bindNullString(insert, 4, contact.getDepartment());
             bindNullString(insert, 5, contact.getEmail());
             bindNullString(insert, 6, contact.getPhone());
-            bindNullString(insert, 7, contact.getMobil());
+            bindNullString(insert, 7, contact.getMobile());
             bindNullString(insert, 8, contact.getFax());
             
             if (contact.getBornOn() != null)
@@ -199,7 +199,7 @@ public final class ContactDAO extends BaseDAO {
         if (!cursor.isNull(6))
             contact.setPhone(cursor.getString(6));
         if (!cursor.isNull(7))
-            contact.setMobil(cursor.getString(7));
+            contact.setMobile(cursor.getString(7));
         if (!cursor.isNull(8))
             contact.setFax(cursor.getString(8));
         if (!cursor.isNull(9))

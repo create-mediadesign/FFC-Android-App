@@ -102,7 +102,7 @@ public final class ContactDetailsActivity extends RoboSherlockActivity {
                 makePhoneCall(contact.getPhone());
                 return true;
             case id.phone_mobile:
-                makePhoneCall(contact.getMobil());
+                makePhoneCall(contact.getMobile());
                 return true;
         default:
             return super.onOptionsItemSelected(item);
